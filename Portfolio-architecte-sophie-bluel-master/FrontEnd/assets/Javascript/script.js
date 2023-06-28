@@ -65,7 +65,5 @@ async function fetchData() {
 
   //ON AJOUTE LE PARENT DANS LE HMTL VIA A LA POSITION DEFINI JUSTE AVANT
   position.insertAdjacentElement("afterend" , button_align);  
-  
-
 }
 fetchData();
