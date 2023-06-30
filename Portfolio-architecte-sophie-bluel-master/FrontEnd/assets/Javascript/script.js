@@ -77,10 +77,8 @@ btn_tous.addEventListener("click", function () {
   fetchData();
 });
 
-//AJOUT DUN EVENLISTENER
-console.log(btn_objets)
+//AJOUT DUN EVENLISTENER POUR LES OBJETS
 btn_objets.addEventListener("click", async function () {
-  console.log("bouton")
   const response = await fetch("http://localhost:5678/api/works");
   const projets = await response.json();
   const objets = projets.filter(function (projet) {
@@ -116,3 +114,76 @@ btn_objets.addEventListener("click", async function () {
   }
 });
 
+//AJOUT DUN EVENLISTENER POUR LES APPARTEMENTS
+btn_appartements.addEventListener("click", async function () {
+  const response = await fetch("http://localhost:5678/api/works");
+  const projets = await response.json();
+  const appartements = projets.filter(function (projet) {
+    return projet.category.name === "Appartements";
+  });
+
+  document.querySelector(".gallery").innerHTML = "";
+  //SELECTION LE PARENT GALLERY
+  const gallery = document.querySelector(".gallery");
+
+  //BOUCLE FOR POUR FAIRE DEFILER LES IMAGE LE TEXTE ET LES ALT JUSQUA FIN DU TABLEAU (LENGTH)
+  for (let i = 0; i < appartements.length; i++) {
+    //CREATION BALISE IMAGE
+    const img = document.createElement("img");
+
+    //AJOUT DES IMAGES ET DES ALT A PARTIR DE L'API A L'HTML
+    img.src = appartements[i].imageUrl;
+    img.alt = appartements[i].title;
+
+    //CREATION DES BALISES FIGURE ET FIGCAPTION
+    const figure = document.createElement("figure");
+    const figcaption = document.createElement("figcaption");
+
+    //AJOUT DES TITEZ SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
+    figcaption.innerText = appartements[i].title;
+
+    //AJOUT DES BALISE IMG ET FIGCAPTION DANS LA BALISE FIGURE
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+
+    //AJOUT DES BALISES FIGURE AU PARENT
+    gallery.appendChild(figure);
+  }
+});
+
+//AJOUT DUN EVENLISTENER POUR LES HOTEL & RESTAURANTS
+btn_hotel_restaurant.addEventListener("click", async function () {
+  const response = await fetch("http://localhost:5678/api/works");
+  const projets = await response.json();
+  const btn_hotel_restaurant = projets.filter(function (projet) {
+    return projet.category.name === "Hotels & restaurants";
+  });
+
+  document.querySelector(".gallery").innerHTML = "";
+  //SELECTION LE PARENT GALLERY
+  const gallery = document.querySelector(".gallery");
+
+  //BOUCLE FOR POUR FAIRE DEFILER LES IMAGE LE TEXTE ET LES ALT JUSQUA FIN DU TABLEAU (LENGTH)
+  for (let i = 0; i < btn_hotel_restaurant.length; i++) {
+    //CREATION BALISE IMAGE
+    const img = document.createElement("img");
+
+    //AJOUT DES IMAGES ET DES ALT A PARTIR DE L'API A L'HTML
+    img.src = btn_hotel_restaurant[i].imageUrl;
+    img.alt = btn_hotel_restaurant[i].title;
+
+    //CREATION DES BALISES FIGURE ET FIGCAPTION
+    const figure = document.createElement("figure");
+    const figcaption = document.createElement("figcaption");
+
+    //AJOUT DES TITEZ SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
+    figcaption.innerText = btn_hotel_restaurant[i].title;
+
+    //AJOUT DES BALISE IMG ET FIGCAPTION DANS LA BALISE FIGURE
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+
+    //AJOUT DES BALISES FIGURE AU PARENT
+    gallery.appendChild(figure);
+  }
+});
