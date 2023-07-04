@@ -128,3 +128,5 @@ btn_appartements.addEventListener("click", function () {
 btn_hotel_restaurant.addEventListener("click", function () {
   afficherProjetsParCategorie("Hotels & restaurants");
 });
+
+
