@@ -8,7 +8,7 @@ form.addEventListener("submit", function (event) {
   //RECUPERATION DES VALEURS DES ENTREES
   const emailInput = document.querySelector("#email");
   const passwordInput = document.querySelector("#password");
-  
+
   const email = emailInput.value;
   const password = passwordInput.value;
 
@@ -30,24 +30,27 @@ form.addEventListener("submit", function (event) {
     .then(function (response) {
       if (response.ok) {
         // Le statut de la réponse est "OK" (200)
-        // Faire quelque chose lorsque la réponse est réussie
-        window.location.href = "index.html";
-      }
-
-      if (response.status === 401) {
+        // Récupérer le token à partir de la réponse
+        return response.json();
+      } else if (response.status === 401) {
         const error = document.querySelector("#error");
         error.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
         error.style.color = "red";
         error.style.fontWeight = "bolder";
 
-        console.log(error)
-        // Gérer l'erreur 401 ici, par exemple, afficher un message d'erreur ou rediriger vers la page de connexion
-        throw new Error("Erreur dans l’identifiant ou le mot de passe");
+        throw new Error("Erreur dans l'identifiant ou le mot de passe");
+      } else {
+        throw new Error("Erreur lors de la requête");
       }
     })
 
+    .then(function (data) {
+      const token = data.token; // Récupérer le token à partir des données
+      localStorage.setItem("token", token);
+      // Redirection vers la page d'accueil ou autre action à effectuer
+      window.location.href = "index.html";
+    })
     .catch(function (error) {
       // Gérer toutes les autres erreurs ici
-      
     });
 });
