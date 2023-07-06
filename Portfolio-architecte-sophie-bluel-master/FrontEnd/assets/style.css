@@ -28,6 +28,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
@@ -46,18 +47,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
-body {
+
+.main_conteneur {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -131,6 +134,7 @@ li:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	margin-top: 2em;
 }
 
 .gallery img {
@@ -220,3 +224,49 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 }
+
+li a {
+	text-decoration: none;
+	color: black;
+}
+
+.headband {
+  	width: 100%;
+  	height: 59px;
+  	background-color: black;  	
+  	display: none;
+  	justify-content: center;
+  	align-items: center;	
+  	color: white;
+  	gap: 1em; 
+}
+
+.headband button {
+	border-radius: 60px;
+	width: 180px;
+	height: 40px;
+	text-align: center;
+	border: none;
+}
+
+.headband i {
+	color: white;
+	margin-right: 1em;
+}
+
+.align_modify  {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: -8%;
+	gap: 10px;
+}
+
+.align_modify .modify_icon {
+	margin-bottom: 2em;
+}
+
+.modify_icon i{
+	margin-right: 1em;
+}
+
