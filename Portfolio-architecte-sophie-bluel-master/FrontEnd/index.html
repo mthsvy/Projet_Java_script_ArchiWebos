@@ -19,7 +19,7 @@
 
 <body>
 	<div class="headband">
-		<span><i class="fa-regular fa-pen-to-square"></i>Mode édition</span>
+		<span class="openModal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</span>
 		<button>publier les changements</button>
 	</div>
 	<section class="main_conteneur">
@@ -53,8 +53,8 @@
 			<section id="portfolio">
 				<div class="align_modify">
 					<h2>Mes Projets</h2>
-					<a>
-						<div class="modify_icon"><i class="fa-regular fa-pen-to-square"></i>modifier</div>
+					<a href="#">
+						<div class="modify_icon openModal" ><i class="fa-regular fa-pen-to-square"></i>modifier</div>
 					</a>
 				</div>
 				<div class="gallery"></div>
@@ -75,6 +75,24 @@
 		</main>
 	</section>
 
+	<!-- MODALE -->
+	<aside class="modal" id="addModal" aria-hidden="true" role="dialog" aria-modal="false">
+		<div class="modal_wrapper">
+			<h2>Ajout photo</h2>
+			<form action="#" method="post">
+				<label for="img"></label>
+				<input type="file">
+				<label for="titre">Titre</label>
+				<input type="text" name="title" id="title">
+				<label for="categorie">Categorie</label>
+				<select name="categorie" id="categorie">
+					<option value="Objets">Objets</option>
+				</select>
+				<input type="submit" value="Valider">
+			</form>
+		</div>
+	</aside>
+
 
 	<footer>
 		<nav>
@@ -84,6 +102,7 @@
 		</nav>
 	</footer>
 	<script src="./assets/Javascript/script.js"></script>
+	<script src="./assets/Javascript/modal.js"></script>
 </body>
 
 </html>
