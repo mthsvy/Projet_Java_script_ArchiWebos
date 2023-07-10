@@ -134,9 +134,11 @@ if (localStorage.getItem("token")) {
 
   //SELECTIONNER LE BANDEAU
   const headband = document.querySelector(".headband");
+  const modify_button = document.querySelector(".modify_icon");
 
   //AFFICHER LE BANDEAU
   headband.style.display = "flex";
+  modify_button.style.display = "block";
 
   //-------------------------------------------------SE DECONNECTER------------------------------
 
