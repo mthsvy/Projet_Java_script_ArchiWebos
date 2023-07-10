@@ -80,7 +80,7 @@ async function afficherProjetsParCategorie(categories) {
     return projet.category.name === categories;
   });
 
-  document.querySelector(".gallery").innerHTML = "";
+   document.querySelector(".gallery").innerHTML = "";
   //SELECTION LE PARENT GALLERY
   const gallery = document.querySelector(".gallery");
 
@@ -97,7 +97,7 @@ async function afficherProjetsParCategorie(categories) {
     const figure = document.createElement("figure");
     const figcaption = document.createElement("figcaption");
 
-    //AJOUT DES TITEZ SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
+    //AJOUT DES TITRES SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
     figcaption.innerText = projets_filtree[i].title;
 
     //AJOUT DES BALISE IMG ET FIGCAPTION DANS LA BALISE FIGURE

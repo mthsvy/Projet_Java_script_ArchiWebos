@@ -19,7 +19,7 @@
 
 <body>
 	<div class="headband">
-		<span class="openModal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</span>
+		<span><i class="fa-regular fa-pen-to-square"></i>Mode édition</span>
 		<button>publier les changements</button>
 	</div>
 	<section class="main_conteneur">
@@ -54,7 +54,7 @@
 				<div class="align_modify">
 					<h2>Mes Projets</h2>
 					<a href="#">
-						<div class="modify_icon openModal" ><i class="fa-regular fa-pen-to-square"></i>modifier</div>
+						<div class="modify_icon open_modal"><i class="fa-regular fa-pen-to-square"></i>modifier</div>
 					</a>
 				</div>
 				<div class="gallery"></div>
@@ -75,24 +75,38 @@
 		</main>
 	</section>
 
-	<!-- MODALE -->
-	<aside class="modal" id="addModal" aria-hidden="true" role="dialog" aria-modal="false">
-		<div class="modal_wrapper">
-			<h2>Ajout photo</h2>
-			<form action="#" method="post">
-				<label for="img"></label>
-				<input type="file">
-				<label for="titre">Titre</label>
-				<input type="text" name="title" id="title">
-				<label for="categorie">Categorie</label>
-				<select name="categorie" id="categorie">
-					<option value="Objets">Objets</option>
-				</select>
-				<input type="submit" value="Valider">
-			</form>
+	<!------------------------------------ MODALE -------------------------------------->
+	<aside>
+		<div class="overlay"></div>
+		<div class="modal" id="modal">
+			<div class="modal_header">
+				<h2>Ajout photo</h2>
+				<button class="modal_close">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+			<div class="modal_body">
+				<form action="#" method="post">
+					<input type="file" id="img" accept=".jpg, .png">
+					<label for="img">
+						<div class="modal_input">
+							<i class="fa-regular fa-image"></i>
+							<div class="modal_button">+ Ajouter photo</div>
+							<span>jpg, png : 4mo max</span>
+						</div>
+					</label>
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title">
+					<label for="categorie">Catégorie</label>
+					<select name="categorie" id="categorie">
+						<option value=""></option>
+					</select>
+					<hr>
+					<input type="submit" value="Valider">
+				</form>
+			</div>
 		</div>
 	</aside>
-
 
 	<footer>
 		<nav>

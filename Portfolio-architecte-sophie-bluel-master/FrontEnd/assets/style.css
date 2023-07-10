@@ -145,7 +145,7 @@ li:hover {
 	width: 50%;
 	margin: auto;
 }
-#contact, #log_in > * {
+#contact, #log_in , #modal > * {
 	text-align: center;
 
 }
@@ -157,20 +157,20 @@ li:hover {
 	padding-bottom: 40px;
 }
 
-#contact form, #log_in form {
+#contact form, #log_in form , #modal form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input, #log_in input {
+#contact input, #log_in input , #modal input , #modal select{
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label, #log_in label{
+#contact label, #log_in label , #modal label{
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -275,33 +275,118 @@ li a {
 	color: black;
 }
 
-.modal {
+.overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);	
+	display: none;	
 }
 
-.modal_wrapper {
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% , -50%);
 	width: 630px;
-	height: 670px;
-	top: 660px;
-	left: 405px;
+	height: 731px;
+	background-color: white;
 	border-radius: 10px;
-	background-color: white;	
+	box-shadow: rgba(99, 99, 99, 0.2)0px 2px 8px 0px;
+	display: none;
+	padding-top: 3%;
 }
 
-body , html {
-	margin: 0;
-	padding: 0;
+.modal_body {
+	width: 75%;
+	margin: auto;
 }
 
-* {box-sizing: border-box;}
+.modal_close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	border: none;
+	cursor: pointer;
+	background-color: white;
+	font-size: 1.5em;
+}
+
+.modal_close:hover {
+	opacity: 0.5;
+}
+
+.modal_open {
+	display: block;
+}
+
+#img {
+	display: none;
+}
+
+.modal_input {
+	background-color: #E8F1F6;
+	width: 100%;
+	height: 169px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.modal_input img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+  }  
+
+.modal_input i {
+	font-size: 5em;
+	color: #CBD6DC;
+}
+
+.modal_input span {
+	color: #444444;
+}
+
+.modal input[type="submit"] {
+	background-color: #A7A7A7;
+	width: 237px;
+	cursor: pointer;	
+}
+
+.modal_button {
+	border: none;
+	background-color: #CBD6DC;
+	border-radius: 50px;
+	width: 173px;
+	height: 36px;
+	color: #306685 ;
+	font-size: 1em;
+	cursor: pointer;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal_button:hover ,.modal input[type="submit"]:hover {
+	opacity: 0.9;
+}
+
+hr {
+	width: 100%;
+	color: #B3B3B3;
+	margin-top: 50px;	
+}
+
+
+
+
+
+
 
 
 
