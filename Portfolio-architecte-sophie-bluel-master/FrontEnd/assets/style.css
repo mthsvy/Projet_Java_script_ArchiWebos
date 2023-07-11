@@ -315,6 +315,16 @@ li a {
 	font-size: 1.5em;
 }
 
+.button_back {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	border: none;
+	cursor: pointer;
+	background-color: white;
+	font-size: 1.5em;
+}
+
 .modal_close:hover {
 	opacity: 0.5;
 }
@@ -381,6 +391,19 @@ hr {
 	width: 100%;
 	color: #B3B3B3;
 	margin-top: 50px;	
+}
+
+.align_galerie_photos {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.a_red {
+	text-decoration: none;
+	color: red;
+	padding-top: 20px;
 }
 
 

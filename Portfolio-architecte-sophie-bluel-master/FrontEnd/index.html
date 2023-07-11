@@ -78,12 +78,15 @@
 	<!------------------------------------ MODALE -------------------------------------->
 	<aside>
 		<div class="overlay"></div>
-		<div class="modal" id="modal">
+		<div class="modal" id="modal">			
 			<div class="modal_header">
 				<h2>Ajout photo</h2>
 				<button class="modal_close">
-					<i class="fa-solid fa-xmark"></i>
+					<i class="fa-solid fa-xmark"></i>					
 				</button>
+				<button class="button_back">
+					<i class="fa-solid fa-arrow-left"></i>
+				</button>				
 			</div>
 			<div class="modal_body">
 				<form action="#" method="post">
@@ -105,6 +108,26 @@
 					<input type="submit" value="Valider">
 				</form>
 			</div>
+		</div>
+	</aside>
+
+	<!------------------------------- SECOND MODALE --------------------------------------->
+	<aside>
+		<div class="overlay"></div>		
+		<div class="modal" id="modal_delete">
+			<div class="modal_header">
+				<div class="align_galerie_photos">
+					<h2>Galerie photo</h2>
+					<button class="modal_close">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+			</div>
+			<div class="modal_body align_galerie_photos">
+				<hr>
+				<button class="button_color" id="button_ajouter">Ajouter une photo</button>	
+				<a href="#" class="a_red">Supprimer la galerie</a>			
+			</div>			
 		</div>
 	</aside>
 

@@ -1,15 +1,29 @@
+// OUVRE LA MODALE
 document.querySelectorAll(".open_modal").forEach((e) => {
   e.addEventListener("click", function () {
     document.querySelector(".overlay").style.display = "block";
     document.querySelector(".modal").classList.add("modal_open");
+    document.querySelector("#modal_delete").classList.add("modal_open")
   });
 });
 
+// FERME LA MODALE EN CLIQUANT SUR LA CROIX 
 document.querySelectorAll(".modal_close").forEach(function (e) {
   e.addEventListener("click", function () {
     document.querySelector(".overlay").style.display = "none";
     document.querySelector(".modal").classList.remove("modal_open");
+    document.querySelector("#modal_delete").classList.remove("modal_open");    
   });
+});
+
+//FERMETURE DE LA MODALE EN CLIQUANT A LEXTERIEUR
+document.querySelector(".overlay").addEventListener("click", function (event) {
+  // Vérifiez si l'élément cliqué est l'overlay lui-même, et non un élément à l'intérieur de la modale
+  if (event.target === this) {
+    document.querySelector(".overlay").style.display = "none";
+    document.querySelector(".modal").classList.remove("modal_open");
+    document.querySelector("#modal_delete").classList.remove("modal_open");   
+  }
 });
 
 //AJOUTER LES CATEGORIE DANS LE SELECT
@@ -96,3 +110,23 @@ input.addEventListener("change", function () {
     preview.src = ""; // Effacement de l'aperçu s'il n'y a pas de fichier sélectionné
   }
 });
+
+// AU CLICK DE LA MODAL GALERIE PHOTO OUVERTURE DE LA MODAL AJOUT DE PROJET
+const button_ajouter_photo = document.querySelector("#button_ajouter");
+button_ajouter_photo.addEventListener("click" , function () {
+  const modal = document.querySelector("#modal");
+  modal.classList.add("modal_open");
+  const modal_close = document.querySelector("#modal_delete");
+  modal_close.classList.remove("modal_open");
+});
+
+// RETOUR SUR LA MODAL GALERIE PHOTO LORS DU CLICK SUR LE BOUTON BACK
+const button_back = document.querySelector(".button_back");
+button_back.addEventListener("click" , function() {
+  const modal_open = document.querySelector("#modal")
+  modal_open.classList.remove("modal_open");
+  const modal_delete = document.querySelector("#modal_delete");
+  modal_delete.classList.add("modal_open");
+}) 
+
+
