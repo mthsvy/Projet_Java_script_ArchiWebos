@@ -139,7 +139,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 #contact, #log_in {
 	width: 50%;
@@ -164,7 +163,7 @@ li:hover {
 	flex-direction: column;
 }
 
-#contact input, #log_in input , #modal input , #modal select{
+#contact input, #log_in input , #modal input , #modal select , #button_ajouter{
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -178,16 +177,27 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] , #button_ajouter{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
+	cursor: pointer;
 }
+
+input[type="submit"]:hover , #button_ajouter:hover {
+	opacity: 0.9;
+}
+
+#button_ajouter {
+	font-size: 1em;
+	margin: auto;
+}
+
 
 footer nav ul {
 	display: flex;
@@ -325,8 +335,8 @@ li a {
 	font-size: 1.5em;
 }
 
-.modal_close:hover {
-	opacity: 0.5;
+.modal_close:hover, .button_back:hover {
+	opacity: 0.9;
 }
 
 .modal_open {
@@ -390,7 +400,8 @@ li a {
 hr {
 	width: 100%;
 	color: #B3B3B3;
-	margin-top: 50px;	
+	margin-top: 30px;	
+	margin-bottom: 30px;
 }
 
 .align_galerie_photos {
@@ -400,11 +411,55 @@ hr {
 	justify-content: center;
 }
 
+.align_galerie_photos h2 {
+	padding-top: 1em;
+}
+
+.align_galerie_photos .button_color {
+	margin-top: 2em;
+}
+
 .a_red {
 	text-decoration: none;
 	color: red;
 	padding-top: 20px;
 }
+
+.gallery_modal img {
+	width: 100%;
+}
+
+.gallery_modal {
+	width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-top: 4rem;
+}
+
+.trash_can {	
+	background-color: black;
+	color: white;
+	padding:5px;
+	font-size: 10px;
+}
+
+.hidden_arrow {
+	opacity: 0;
+	opacity: 0.3s ease;
+}
+
+.span_icon {
+	position:absolute;
+	top: 2.5px;
+	right: 2.5px;
+	cursor: pointer;
+}
+
+
+
+
 
 
 

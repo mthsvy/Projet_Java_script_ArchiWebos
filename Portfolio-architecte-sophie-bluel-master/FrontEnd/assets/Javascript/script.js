@@ -80,7 +80,7 @@ async function afficherProjetsParCategorie(categories) {
     return projet.category.name === categories;
   });
 
-   document.querySelector(".gallery").innerHTML = "";
+  document.querySelector(".gallery").innerHTML = "";
   //SELECTION LE PARENT GALLERY
   const gallery = document.querySelector(".gallery");
 
