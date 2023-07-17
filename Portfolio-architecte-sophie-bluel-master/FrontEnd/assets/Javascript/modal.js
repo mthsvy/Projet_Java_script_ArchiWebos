@@ -144,6 +144,7 @@ async function fetchData() {
     const article = document.createElement("article");
     const p = document.createElement("p");
     const span = document.createElement("span");
+    const id = projets[i].id;
 
     //AJOUT DES IMAGES A PARTIR DE L'API A L'HTML
     img.src = projets[i].imageUrl;
@@ -152,6 +153,7 @@ async function fetchData() {
       '<i class="fa-solid fa-arrows-up-down-left-right trash_can hidden_arrow"></i> <i class="fa-solid fa-trash-can trash_can"></i>';
 
     article.style.position = "relative";
+    article.id = "article_" + id;
     span.classList.add("span_icon");
 
     //AJOUT ECOUTEUR AUX IMAGES ET A LA POUBELLE
@@ -180,10 +182,10 @@ async function fetchData() {
 
 fetchData();
 
-// SUPPRIME LIMAGE VIA LAPI
+// SUPPRIME L'IMAGE VIA L'API ET RETIRE LES ÉLÉMENTS DU DOM
+
 function deleteImage(id) {
   const token = localStorage.getItem("token");
-  console.log(`Bearer ${token}`);
 
   fetch("http://localhost:5678/api/works/" + id, {
     method: "DELETE",
@@ -194,7 +196,11 @@ function deleteImage(id) {
     .then(function (response) {
       if (response.ok) {
         // La suppression a réussi
-        // ...
+
+        // Retirer les éléments du DOM
+        const gallery_modal = document.querySelector(".gallery_modal");
+        const article = document.getElementById("article_" + id);
+        gallery_modal.removeChild(article);
       } else if (response.status === 401) {
         throw new Error("Erreur dans l'identifiant ou le mot de passe");
       } else {
@@ -206,3 +212,4 @@ function deleteImage(id) {
       console.error(error);
     });
 }
+

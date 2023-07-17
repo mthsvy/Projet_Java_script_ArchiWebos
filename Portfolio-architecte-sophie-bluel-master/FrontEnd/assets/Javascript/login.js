@@ -19,6 +19,8 @@ form.addEventListener("submit", function (event) {
   };
 
   //ENVOIE DE LA REQUETE POST AVEC LES DONNEES
+  debugger
+  
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {

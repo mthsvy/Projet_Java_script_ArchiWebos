@@ -456,6 +456,11 @@ hr {
 	right: 2.5px;
 	cursor: pointer;
 }
+.span_icon:hover {
+	opacity: 0.8;
+	transform: scale(1.1);
+    transition-duration: 150ms;
+}
 
 
 
