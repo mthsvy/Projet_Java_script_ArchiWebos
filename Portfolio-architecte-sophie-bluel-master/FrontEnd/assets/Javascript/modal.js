@@ -58,35 +58,44 @@ form.addEventListener("submit", function (event) {
   const title = titleInput.value;
   const categorie = categorieInput.value;
 
-  //CONSTRUCTION DE LOBJET DE DONNEE A ENVOYER
-  let formData = new FormData();
-  formData.append("title", title);
-  formData.append("category", parseInt(categorie));
-  formData.append("image", img);
+  if (title != "" && categorie != "" && img != "") {
+    //CONSTRUCTION DE LOBJET DE DONNEE A ENVOYER
+    let formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", parseInt(categorie));
+    formData.append("image", img);
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: formData,
-  })
-    .then(function (response) {
-      if (response.ok) {
-        // Le statut de la réponse est "OK" (200)
-        // ...
-      } else if (response.status === 401) {
-        throw new Error("Erreur dans l'identifiant ou le mot de passe");
-      } else {
-        throw new Error("Erreur lors de la requête");
-      }
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
     })
-    .catch(function (error) {
-      // Gérer les erreurs de la requête
-      console.error(error);
-    });
+      .then(function (response) {
+        if (response.ok) {
+          // AJOUT DU PROJET DANS LA LISTE DU PROJET
+          
+        } else if (response.status === 401) {
+          throw new Error("Erreur dans l'identifiant ou le mot de passe");
+        } else {
+          throw new Error("Erreur lors de la requête");
+        }
+      })
+      .catch(function (error) {
+        // Gérer les erreurs de la requête
+        console.error(error);
+      });
+  } else {
+    // AFFICHAGE DUN MESSAGE DERREUR
+    const error = document.querySelector("#error");
+    error.innerHTML = "Veuillez remplir le formulaire";
+    error.style.color = "red";
+    error.style.fontWeight = "bolder";
+    error.style.textAlign = "center";
+  }
 });
 
 // AFFICHER LIMAGE SELECTIONNER DANS LE INPUT FILE
@@ -212,4 +221,3 @@ function deleteImage(id) {
       console.error(error);
     });
 }
-

@@ -144,6 +144,7 @@ if (localStorage.getItem("token")) {
 
   //AJOUTE UN ECOUTEUR
   logout.addEventListener("click", function () {
+    
     //REACHARGE LA PAGE POUR RECUPERER LE LI LOGIN
     location.reload();
 
