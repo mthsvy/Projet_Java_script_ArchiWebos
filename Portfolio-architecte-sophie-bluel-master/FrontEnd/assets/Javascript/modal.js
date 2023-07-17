@@ -76,8 +76,8 @@ form.addEventListener("submit", function (event) {
     })
       .then(function (response) {
         if (response.ok) {
+          location.reload();
           // AJOUT DU PROJET DANS LA LISTE DU PROJET
-          
         } else if (response.status === 401) {
           throw new Error("Erreur dans l'identifiant ou le mot de passe");
         } else {
