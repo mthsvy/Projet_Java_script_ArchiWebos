@@ -1,3 +1,4 @@
+// -----------------------------------OUVERTURE---FERMETURE---MODALE
 // OUVRE LA MODALE
 document.querySelectorAll(".open_modal").forEach((e) => {
   e.addEventListener("click", function () {
@@ -18,6 +19,7 @@ document.querySelectorAll(".modal_close").forEach(function (e) {
 
 //FERMETURE DE LA MODALE EN CLIQUANT A LEXTERIEUR
 document.querySelector(".overlay").addEventListener("click", function (event) {
+  
   // Vérifiez si l'élément cliqué est l'overlay lui-même, et non un élément à l'intérieur de la modale
   if (event.target === this) {
     document.querySelector(".overlay").style.display = "none";
@@ -46,6 +48,7 @@ setCategorie();
 const form = document.querySelector(".modal form");
 
 form.addEventListener("submit", function (event) {
+
   //EMPECHE LE COMPORTEMENT PAR DEFAULT DU FORMULAIRE
   event.preventDefault();
 
@@ -59,6 +62,7 @@ form.addEventListener("submit", function (event) {
   const categorie = categorieInput.value;
 
   if (title != "" && categorie != "" && img != "") {
+
     //CONSTRUCTION DE LOBJET DE DONNEE A ENVOYER
     let formData = new FormData();
     formData.append("title", title);
@@ -148,6 +152,7 @@ async function fetchData() {
 
   // BOUCLE POUR AJOUTER LES MINIATURE DES IMAGE
   for (let i = 0; i < projets.length; i++) {
+
     //CREATION BALISE IMAGE
     const img = document.createElement("img");
     const article = document.createElement("article");
@@ -184,7 +189,6 @@ async function fetchData() {
     article.appendChild(img);
     article.appendChild(span);
     article.appendChild(p);
-
     gallery_modal.appendChild(article);
   }
 }
@@ -192,7 +196,6 @@ async function fetchData() {
 fetchData();
 
 // SUPPRIME L'IMAGE VIA L'API ET RETIRE LES ÉLÉMENTS DU DOM
-
 function deleteImage(id) {
   const token = localStorage.getItem("token");
 
@@ -217,6 +220,7 @@ function deleteImage(id) {
       }
     })
     .catch(function (error) {
+
       // Gérer les erreurs de la requête
       console.error(error);
     });

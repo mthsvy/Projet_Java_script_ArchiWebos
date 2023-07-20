@@ -2,6 +2,7 @@
 const form = document.querySelector("form");
 
 form.addEventListener("submit", function (event) {
+  
   //EMPECHE LE COMPORTEMENT PAR DEFAULT DU FORMULAIRE
   event.preventDefault();
 
@@ -19,8 +20,6 @@ form.addEventListener("submit", function (event) {
   };
 
   //ENVOIE DE LA REQUETE POST AVEC LES DONNEES
-  debugger
-  
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
@@ -31,6 +30,7 @@ form.addEventListener("submit", function (event) {
   })
     .then(function (response) {
       if (response.ok) {
+
         // Le statut de la réponse est "OK" (200)
         // Récupérer le token à partir de la réponse
         return response.json();
@@ -49,6 +49,7 @@ form.addEventListener("submit", function (event) {
     .then(function (data) {
       const token = data.token; // Récupérer le token à partir des données
       localStorage.setItem("token", token);
+
       // Redirection vers la page d'accueil ou autre action à effectuer
       window.location.href = "index.html";
     })

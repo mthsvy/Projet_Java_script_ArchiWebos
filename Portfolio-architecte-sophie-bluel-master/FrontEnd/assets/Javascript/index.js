@@ -1,34 +1,11 @@
-//Récuperation des projets de l'architecte avec fetch
+// REQUETE POUR RECUPERER TOUT LES projectS MY DANS UNE VARIABLE
+let allProjects = [];
+
+//Récuperation des projects de l'architecte avec fetch
 async function fetchData() {
   const response = await fetch("http://localhost:5678/api/works");
-  const projets = await response.json();
-
-  //SELECTION LE PARENT GALLERY
-  const gallery = document.querySelector(".gallery");
-
-  //BOUCLE FOR POUR FAIRE DEFILER LES IMAGE LE TEXTE ET LES ALT JUSQUA FIN DU TABLEAU (LENGTH)
-  for (let i = 0; i < projets.length; i++) {
-    //CREATION BALISE IMAGE
-    const img = document.createElement("img");
-
-    //AJOUT DES IMAGES ET DES ALT A PARTIR DE L'API A L'HTML
-    img.src = projets[i].imageUrl;
-    img.alt = projets[i].title;
-
-    //CREATION DES BALISES FIGURE ET FIGCAPTION
-    const figure = document.createElement("figure");
-    const figcaption = document.createElement("figcaption");
-
-    //AJOUT DES TITRE SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
-    figcaption.innerText = projets[i].title;
-
-    //AJOUT DES BALISE IMG ET FIGCAPTION DANS LA BALISE FIGURE
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-
-    //AJOUT DES BALISES FIGURE AU PARENT
-    gallery.appendChild(figure);
-  }
+  allProjects = await response.json();
+  displayProjectByCategory();
 }
 
 fetchData();
@@ -37,17 +14,17 @@ fetchData();
 const button_align = document.createElement("div");
 
 //CREATION DU BOUTON TOUS
-const btn_tous = document.createElement("button");
-btn_tous.classList.add("button_color");
-btn_tous.innerText = "Tous";
-button_align.appendChild(btn_tous);
-btn_tous.addEventListener("click", function () {
+const btn_all = document.createElement("button");
+btn_all.classList.add("button_color");
+btn_all.innerText = "Tous";
+button_align.appendChild(btn_all);
+btn_all.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
-  fetchData();
+  displayProjectByCategory();
 });
 
 //AFFICHAGE DES BOUTONS DES CATEGORIES A PARTIR DE LAPI
-async function getCategorie() {
+async function getCategory() {
   const response = await fetch("http://localhost:5678/api/categories");
   const categorie = await response.json();
   for (let i = 0; i < categorie.length; i++) {
@@ -56,12 +33,12 @@ async function getCategorie() {
     btn.innerText = categorie[i].name;
     button_align.appendChild(btn);
     btn.addEventListener("click", function () {
-      afficherProjetsParCategorie(categorie[i].name);
+      displayProjectByCategory(categorie[i].name);
     });
   }
 }
 
-getCategorie();
+getCategory();
 
 //AJOUT DE LA CLASSE AU PARENT
 button_align.classList.add("button_align");
@@ -72,33 +49,37 @@ const position = document.querySelector(".align_modify");
 //ON AJOUTE LE PARENT DANS LE HMTL VIA LA POSITION DEFINI JUSTE AVANT
 position.insertAdjacentElement("afterend", button_align);
 
-//FACTORISER
-async function afficherProjetsParCategorie(categories) {
-  const response = await fetch("http://localhost:5678/api/works");
-  const projets = await response.json();
-  const projets_filtree = projets.filter(function (projet) {
-    return projet.category.name === categories;
-  });
+//
+async function displayProjectByCategory(categories) {
+  let filtered;
+  if (categories) {
+    filtered = allProjects.filter(function (project) {
+      return project.category.name === categories;
+    });
+  } else {
+    filtered = allProjects;
+  }
 
   document.querySelector(".gallery").innerHTML = "";
   //SELECTION LE PARENT GALLERY
   const gallery = document.querySelector(".gallery");
 
   //BOUCLE FOR POUR FAIRE DEFILER LES IMAGE LE TEXTE ET LES ALT JUSQUA FIN DU TABLEAU (LENGTH)
-  for (let i = 0; i < projets_filtree.length; i++) {
+  for (let i = 0; i < filtered.length; i++) {
+    
     //CREATION BALISE IMAGE
     const img = document.createElement("img");
 
     //AJOUT DES IMAGES ET DES ALT A PARTIR DE L'API A L'HTML
-    img.src = projets_filtree[i].imageUrl;
-    img.alt = projets_filtree[i].title;
+    img.src = filtered[i].imageUrl;
+    img.alt = filtered[i].title;
 
     //CREATION DES BALISES FIGURE ET FIGCAPTION
     const figure = document.createElement("figure");
     const figcaption = document.createElement("figcaption");
 
     //AJOUT DES TITRES SOUS CHAQUES IMAGE A PARTIR DE L'API A L'HTML
-    figcaption.innerText = projets_filtree[i].title;
+    figcaption.innerText = filtered[i].title;
 
     //AJOUT DES BALISE IMG ET FIGCAPTION DANS LA BALISE FIGURE
     figure.appendChild(img);
@@ -114,6 +95,7 @@ async function afficherProjetsParCategorie(categories) {
 
 //SI ON EST CONNECTER
 if (localStorage.getItem("token")) {
+
   //CREE UN LELEMENT
   const logout = document.createElement("li");
   logout.innerText = "logout";
@@ -143,12 +125,12 @@ if (localStorage.getItem("token")) {
   //-------------------------------------------------SE DECONNECTER------------------------------
 
   //AJOUTE UN ECOUTEUR
-  logout.addEventListener("click", function () {
-    
-    //REACHARGE LA PAGE POUR RECUPERER LE LI LOGIN
-    location.reload();
+  logout.addEventListener("click", function () {    
 
     //SUPPRIME LE TOKEN
     localStorage.removeItem("token");
+    
+    //RECHARGE LA PAGE POUR RECUPERER LE LI LOGIN
+    location.reload();
   });
 }
