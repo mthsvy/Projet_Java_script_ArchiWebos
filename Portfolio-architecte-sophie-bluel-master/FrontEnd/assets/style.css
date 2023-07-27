@@ -462,6 +462,10 @@ hr {
     transition-duration: 150ms;
 }
 
+.cursor_pointer {
+	cursor: pointer;
+}
+
 
 
 
